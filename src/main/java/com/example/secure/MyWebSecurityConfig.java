@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -26,9 +27,15 @@ import java.util.Map;
 @Configuration
 public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
     // Encoding method = no ecryption
+//    @Bean
+//    PasswordEncoder passwordEncoder() {
+//        return NoOpPasswordEncoder.getInstance();
+//    }
+
+    // Encryption with BCryptPasswordEncoder
     @Bean
     PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
 
     // User authentication
@@ -37,9 +44,9 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("root").password("123").roles("ADMIN","DBA")
                 .and()
-                .withUser("admin").password("123").roles("ADMIN","USER")
+                .withUser("admin").password("$2a$10$RMuFXGQ5AtH4wOvkUqyvuecpqUSeoxZYqilXzbz50dceRsga.WYiq").roles("ADMIN","USER")
                 .and()
-                .withUser("seconduser").password("123").roles("USER");
+                .withUser("seconduser").password("$2a$10$RMuFXGQ5AtH4wOvkUqyvuecpqUSeoxZYqilXzbz50dceRsga.WYiq").roles("USER");
     }
 
     // Defined the different authorizations
@@ -56,7 +63,7 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login_page")
+//                .loginPage("/login_page")
                 .loginProcessingUrl("/login")
                 .usernameParameter("name")
                 .passwordParameter("passwd")
