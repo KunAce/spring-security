@@ -1,4 +1,4 @@
-package com.example.secure.tmp;
+package com.example.inmemory.tmp;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

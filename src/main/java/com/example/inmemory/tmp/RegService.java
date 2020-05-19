@@ -1,4 +1,4 @@
-package com.example.secure.tmp;
+package com.example.inmemory.tmp;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.example.secure.tmp;
+package com.example.inmemory.tmp;
 
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;

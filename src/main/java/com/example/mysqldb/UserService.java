@@ -1,7 +1,5 @@
 package com.example.mysqldb;
 
-import com.example.mysqldb.UserMapper;
-import com.example.mysqldb.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
